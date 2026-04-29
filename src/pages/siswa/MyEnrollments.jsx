@@ -10,8 +10,6 @@ import {
   AlertCircle,
   RefreshCw,
 } from "lucide-react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 import { getImageUrl } from "../../utils/helpers";
 
 const MyEnrollments = () => {
@@ -24,7 +22,6 @@ const MyEnrollments = () => {
     if (!silent) setIsLoading(true);
     try {
       const response = await axiosInstance.get("/pendaftar/me");
-      console.log(response.data?.data);
       setEnrollments(response.data?.data || []);
     } catch (error) {
       console.error("Failed to fetch enrollments", error);
@@ -37,22 +34,6 @@ const MyEnrollments = () => {
   useEffect(() => {
     fetchMyEnrollments();
   }, []);
-
-  useGSAP(
-    () => {
-      if (!isLoading && enrollments.length > 0) {
-        gsap.from(".enrollment-card", {
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: "power3.out",
-          clearProps: "all",
-        });
-      }
-    },
-    { dependencies: [isLoading, enrollments] },
-  );
 
   const handlePayment = async (pendaftarId) => {
     setProcessingId(pendaftarId);
@@ -213,7 +194,7 @@ const MyEnrollments = () => {
             return (
               <div
                 key={enrollment.id}
-                className="enrollment-card bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 overflow-hidden flex flex-col md:flex-row"
+                className="bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 overflow-hidden flex flex-col md:flex-row hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col border-b md:border-b-0 md:border-r border-slate-100 bg-slate-50/50">
                   <div className="flex-1">
@@ -224,9 +205,9 @@ const MyEnrollments = () => {
                       {programName}
                     </h3>
 
-                    <div className="space-y-5">
+                    <div className="space-y-5 text-left">
                       <div>
-                        <p className="text-sm font-semibold text-slate-600 mb-2">
+                        <p className="text-sm font-semibold text-slate-600 mb-2 text-left">
                           Status Dokumen
                         </p>
                         <div
@@ -238,7 +219,7 @@ const MyEnrollments = () => {
                       </div>
 
                       <div>
-                        <p className="text-sm font-semibold text-slate-600 mb-2">
+                        <p className="text-sm font-semibold text-slate-600 mb-2 text-left">
                           Status Tagihan
                         </p>
                         <div
@@ -253,8 +234,8 @@ const MyEnrollments = () => {
                   <div className="mt-8 pt-6 border-t border-slate-200">
                     {(statusPay === "unpaid" || statusPay === "pending") &&
                     statusReg === "terverifikasi" ? (
-                      <div>
-                        <p className="text-sm text-slate-500 mb-3">
+                      <div className="text-left">
+                        <p className="text-sm text-slate-500 mb-3 text-left">
                           Selesaikan pembayaran untuk mengamankan kursi Anda.
                         </p>
                         <button
@@ -270,9 +251,9 @@ const MyEnrollments = () => {
                       </div>
                     ) : (statusPay === "unpaid" || statusPay === "pending") &&
                       statusReg === "pending" ? (
-                      <div className="bg-blue-50 text-blue-700 p-4 rounded-xl text-sm border border-blue-100 flex gap-3">
+                      <div className="bg-blue-50 text-blue-700 p-4 rounded-xl text-sm border border-blue-100 flex gap-3 text-left">
                         <AlertCircle size={20} className="shrink-0 mt-0.5" />
-                        <p>
+                        <p className="text-left">
                           Pembayaran baru dapat dilakukan setelah dokumen Anda
                           diverifikasi oleh Admin.
                         </p>
@@ -296,21 +277,20 @@ const MyEnrollments = () => {
                   </div>
                 </div>
 
-                {}
                 <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col bg-white">
                   {statusReg === "ditolak" && enrollment.catatan_admin && (
-                    <div className="mb-6 bg-red-50 border border-red-200 p-5 rounded-2xl">
-                      <h4 className="flex items-center gap-2 text-red-800 font-bold mb-2">
+                    <div className="mb-6 bg-red-50 border border-red-200 p-5 rounded-2xl text-left">
+                      <h4 className="flex items-center gap-2 text-red-800 font-bold mb-2 text-left">
                         <AlertCircle size={18} />
                         Catatan Penolakan
                       </h4>
-                      <p className="text-sm text-red-700 leading-relaxed">
+                      <p className="text-sm text-red-700 leading-relaxed text-left">
                         {enrollment.catatan_admin}
                       </p>
                     </div>
                   )}
 
-                  <h4 className="text-sm font-semibold text-slate-600 mb-3">
+                  <h4 className="text-sm font-semibold text-slate-600 mb-3 text-left">
                     Dokumen Ijazah Terunggah
                   </h4>
                   <div className="flex-1 bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden flex items-center justify-center min-h-[300px] relative group">

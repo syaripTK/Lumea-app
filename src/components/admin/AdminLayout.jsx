@@ -8,6 +8,7 @@ import {
   Menu,
   ChevronLeft,
   RocketIcon,
+  GraduationCapIcon,
 } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -117,8 +118,8 @@ const AdminLayout = () => {
         }`}
       >
         <div className="h-16 flex items-center px-6 font-bold text-xl text-white tracking-wider border-b border-slate-800 shrink-0 whitespace-nowrap overflow-hidden">
-          <span className="text-blue-500 mr-2">
-            <RocketIcon size={28} className="ms-1 min-w-[30px]" />
+          <span className="text-blue-400 mr-2">
+            <GraduationCapIcon size={28} className="ms-1 min-w-[30px]" />
           </span>
           <span className="logo-text">Lumea</span>
         </div>

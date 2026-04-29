@@ -53,3 +53,21 @@ body {
   background: #bfdbfe;
   color: #1e40af;
 }
+
+/* Notyf Custom Styling */
+.notyf__toast {
+  border-radius: 20px !important;
+  padding: 0 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  backdrop-filter: blur(8px);
+}
+
+.notyf__message {
+  padding: 16px 20px !important;
+  line-height: 1.4 !important;
+}
+
+.notyf__ripple {
+  height: 500px !important;
+  width: 500px !important;
+}

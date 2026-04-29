@@ -79,4 +79,4 @@ src/
 Lumea terbuka untuk kontribusi. Jika Anda menemukan bug atau ingin menambahkan fitur baru, silakan buka Issue atau kirimkan Pull Request.
 
 ---
-Developed by Ahmad S Syarif - PeTIK Depok
+Developed by Ahmad S Syarip - PeTIK Depok

@@ -22,7 +22,7 @@ const steps = [
     title: "Upload Dokumen",
     desc: "Unggah dokumen persyaratan dalam format digital. Sistem akan memverifikasi secara otomatis.",
     icon: <FileText size={24} className="text-blue-600" />,
-    detail: ["Akta kelahiran", "Kartu keluarga", "Rapor semester"],
+    detail: ["Ijazah SMA", "Nilai rapor"],
   },
   {
     number: "04",

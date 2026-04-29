@@ -2,7 +2,15 @@ import React, { useEffect, useState, useMemo } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { notyfSuccess, notyfError } from "../../utils/notyf";
 import Modal from "../../components/admin/Modal";
-import { CheckCircle, XCircle, FileText, Search, Eye } from "lucide-react";
+import { 
+  CheckCircle, 
+  XCircle, 
+  FileText, 
+  Search, 
+  Eye, 
+  Download, 
+  ExternalLink 
+} from "lucide-react";
 import { getImageUrl } from "../../utils/helpers";
 
 const EnrollmentVerification = () => {
@@ -332,7 +340,7 @@ const EnrollmentVerification = () => {
               <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-2">
                 Dokumen Ijazah
               </p>
-              <div className="bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center min-h-[200px] border border-slate-200">
+              <div className="bg-slate-100 rounded-xl overflow-hidden flex flex-col items-center justify-center min-h-[300px] border border-slate-200 relative group">
                 {(() => {
                   const profileData =
                     selectedEnrollment.profiles ||
@@ -348,19 +356,55 @@ const EnrollmentVerification = () => {
                     : "/ijazah.jpeg";
 
                   return (
-                    <img
-                      src={displaySrc}
-                      alt="Ijazah"
-                      className="max-w-full max-h-96 object-contain p-2"
-                      onError={(e) => {
-                        if (
-                          e.target.src !==
-                          window.location.origin + "/ijazah.jpeg"
-                        ) {
-                          e.target.src = "/ijazah.jpeg";
-                        }
-                      }}
-                    />
+                    <>
+                      <img
+                        src={displaySrc}
+                        alt="Ijazah"
+                        className="max-w-full max-h-[500px] object-contain p-2"
+                        onError={(e) => {
+                          if (
+                            e.target.src !==
+                            window.location.origin + "/ijazah.jpeg"
+                          ) {
+                            e.target.src = "/ijazah.jpeg";
+                          }
+                        }}
+                      />
+                      
+                      <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
+                        <a 
+                          href={displaySrc} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white rounded-full text-slate-900 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 shadow-lg"
+                          title="Lihat Resolusi Penuh"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                        <button 
+                          onClick={async () => {
+                            try {
+                              const response = await fetch(displaySrc);
+                              const blob = await response.blob();
+                              const url = window.URL.createObjectURL(blob);
+                              const a = document.createElement('a');
+                              a.href = url;
+                              a.download = `ijazah-${profile?.nama_lengkap || 'siswa'}.jpg`;
+                              document.body.appendChild(a);
+                              a.click();
+                              window.URL.revokeObjectURL(url);
+                              document.body.removeChild(a);
+                            } catch (err) {
+                              window.open(displaySrc, '_blank');
+                            }
+                          }}
+                          className="p-3 bg-white rounded-full text-slate-900 hover:bg-emerald-600 hover:text-white transition-all transform hover:scale-110 shadow-lg cursor-pointer"
+                          title="Download Ijazah"
+                        >
+                          <Download size={20} />
+                        </button>
+                      </div>
+                    </>
                   );
                 })()}
               </div>

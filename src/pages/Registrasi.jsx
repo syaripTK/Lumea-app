@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { notyfError, notyfSuccess } from "../utils/notyf";
+import { notyfError, notyfSuccess, notyfWarning } from "../utils/notyf";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { 
@@ -103,15 +103,15 @@ const Registrasi = () => {
 
   const validateStep1 = () => {
     if (!formData.email || !formData.password || !formData.confirmPassword) {
-      notyfError("Semua field di Step 1 harus diisi");
+      notyfWarning("Harap lengkapi semua data akun Anda.");
       return false;
     }
     if (formData.password !== formData.confirmPassword) {
-      notyfError("Password dan Konfirmasi Password tidak cocok");
+      notyfWarning("Password dan Konfirmasi Password tidak cocok");
       return false;
     }
     if (formData.password.length < 6) {
-      notyfError("Password minimal 6 karakter");
+      notyfWarning("Password minimal 6 karakter");
       return false;
     }
     return true;
