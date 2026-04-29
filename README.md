@@ -42,8 +42,8 @@ Lumea adalah platform digital modern yang dirancang untuk menyederhanakan proses
 ### Langkah-langkah
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/username/lumea-frontend.git
-   cd lumea-frontend
+   git clone https://github.com/syaripTK/Lumea-app
+   cd Lumea-app
    ```
 
 2. **Instal Dependensi**
@@ -54,7 +54,7 @@ Lumea adalah platform digital modern yang dirancang untuk menyederhanakan proses
 3. **Konfigurasi Environment**
    Buat file `.env` di direktori root dan masukkan konfigurasi berikut:
    ```env
-   VITE_API_URL=http://localhost:5000/api/v1
+   VITE_API_URL=https://syangkan.petik.or.id/api/v1
    VITE_MIDTRANS_CLIENT_KEY=your_client_key_here
    ```
 
