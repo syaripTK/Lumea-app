@@ -42,7 +42,7 @@ const SiswaLayout = () => {
             <div className="flex items-center">
               {}
               <div className="flex-shrink-0 flex items-center gap-2 font-bold text-xl tracking-wider text-slate-800">
-                <RocketIcon size={24} className="text-blue-600" />
+                <GraduationCap size={26} className="text-blue-500" />
                 <span>
                   Lu<span className="text-blue-600">mea</span>
                 </span>

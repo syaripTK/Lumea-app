@@ -2,22 +2,23 @@ import React, { useState, useEffect } from "react";
 import { notyfError, notyfSuccess, notyfWarning } from "../utils/notyf";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import { 
-  Mail, 
-  Lock, 
-  User, 
-  IdCard, 
-  Phone, 
-  MapPin, 
-  Globe, 
-  Map, 
+import {
+  Mail,
+  Lock,
+  User,
+  IdCard,
+  Phone,
+  MapPin,
+  Globe,
+  Map,
   Navigation,
   ArrowRight,
   ArrowLeft,
   GraduationCap,
   CheckCircle2,
   Eye,
-  EyeOff
+  EyeOff,
+  Loader2,
 } from "lucide-react";
 
 const InputWrapper = ({ label, icon: Icon, children }) => (
@@ -154,8 +155,15 @@ const Registrasi = () => {
     <div className="min-h-screen bg-slate-50 flex">
       <div className="hidden lg:flex lg:w-[40%] relative overflow-hidden bg-blue-600">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 opacity-90" />
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
-        
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundSize: "30px 30px",
+          }}
+        />
+
         <div className="relative z-10 w-full h-full flex flex-col justify-between p-12 text-white">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
@@ -166,19 +174,23 @@ const Registrasi = () => {
 
           <div>
             <h2 className="text-5xl font-black leading-tight mb-6">
-              Langkah Awal <br /> 
+              Langkah Awal <br />
               <span className="text-blue-300">Masa Depan</span> <br />
               Dimulai Di Sini.
             </h2>
             <p className="text-lg text-blue-100/80 leading-relaxed max-w-md">
-              Bergabunglah dengan ribuan pelajar lainnya untuk mengembangkan potensi dan meraih prestasi terbaik bersama platform Lumea.
+              Bergabunglah dengan ribuan pelajar lainnya untuk mengembangkan
+              potensi dan meraih prestasi terbaik bersama platform Lumea.
             </p>
           </div>
 
           <div className="flex items-center gap-4 text-sm font-medium text-blue-200">
             <div className="flex -space-x-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full border-2 border-blue-600 bg-slate-200" />
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full border-2 border-blue-600 bg-slate-200"
+                />
               ))}
             </div>
             <span>+500 Siswa Terdaftar Hari Ini</span>
@@ -212,21 +224,30 @@ const Registrasi = () => {
             {steps.map((s, idx) => (
               <React.Fragment key={s.id}>
                 <div className="flex flex-col items-center gap-2">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${step >= s.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 scale-110' : 'bg-white text-slate-400 border border-slate-200'}`}>
+                  <div
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${step >= s.id ? "bg-blue-600 text-white shadow-lg shadow-blue-200 scale-110" : "bg-white text-slate-400 border border-slate-200"}`}
+                  >
                     {step > s.id ? <CheckCircle2 size={24} /> : s.icon}
                   </div>
-                  <span className={`text-xs font-bold uppercase tracking-widest ${step >= s.id ? 'text-blue-600' : 'text-slate-400'}`}>
+                  <span
+                    className={`text-xs font-bold uppercase tracking-widest ${step >= s.id ? "text-blue-600" : "text-slate-400"}`}
+                  >
                     {s.title}
                   </span>
                 </div>
                 {idx < steps.length - 1 && (
-                  <div className={`w-16 h-1 rounded-full transition-colors duration-500 ${step > s.id ? 'bg-blue-600' : 'bg-slate-200'}`} />
+                  <div
+                    className={`w-16 h-1 rounded-full transition-colors duration-500 ${step > s.id ? "bg-blue-600" : "bg-slate-200"}`}
+                  />
                 )}
               </React.Fragment>
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white p-8 sm:p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-8 sm:p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100"
+          >
             {step === 1 ? (
               <div className="space-y-6">
                 <InputWrapper label="Alamat Email" icon={<Mail size={18} />}>
@@ -252,12 +273,19 @@ const Registrasi = () => {
                       placeholder="••••••••"
                       required
                     />
-                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 inset-y-0 flex items-center text-slate-400 hover:text-blue-600">
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 inset-y-0 flex items-center text-slate-400 hover:text-blue-600"
+                    >
                       {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </InputWrapper>
 
-                  <InputWrapper label="Konfirmasi Password" icon={<Lock size={18} />}>
+                  <InputWrapper
+                    label="Konfirmasi Password"
+                    icon={<Lock size={18} />}
+                  >
                     <input
                       type={showConfirmPassword ? "text" : "password"}
                       name="confirmPassword"
@@ -267,8 +295,18 @@ const Registrasi = () => {
                       placeholder="••••••••"
                       required
                     />
-                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 inset-y-0 flex items-center text-slate-400 hover:text-blue-600">
-                      {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className="absolute right-4 inset-y-0 flex items-center text-slate-400 hover:text-blue-600"
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff size={18} />
+                      ) : (
+                        <Eye size={18} />
+                      )}
                     </button>
                   </InputWrapper>
                 </div>
@@ -302,7 +340,10 @@ const Registrasi = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <InputWrapper label="Nomor Telepon" icon={<Phone size={18} />}>
+                  <InputWrapper
+                    label="Nomor Telepon"
+                    icon={<Phone size={18} />}
+                  >
                     <input
                       type="tel"
                       name="telepon"
@@ -314,7 +355,10 @@ const Registrasi = () => {
                     />
                   </InputWrapper>
 
-                  <InputWrapper label="Alamat Lengkap" icon={<MapPin size={18} />}>
+                  <InputWrapper
+                    label="Alamat Lengkap"
+                    icon={<MapPin size={18} />}
+                  >
                     <input
                       type="text"
                       name="alamat"
@@ -337,7 +381,11 @@ const Registrasi = () => {
                       required
                     >
                       <option value="">Pilih</option>
-                      {provinces.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+                      {provinces.map((p) => (
+                        <option key={p.id} value={p.id}>
+                          {p.name}
+                        </option>
+                      ))}
                     </select>
                   </InputWrapper>
 
@@ -351,11 +399,18 @@ const Registrasi = () => {
                       required
                     >
                       <option value="">Pilih</option>
-                      {regencies.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}
+                      {regencies.map((r) => (
+                        <option key={r.id} value={r.id}>
+                          {r.name}
+                        </option>
+                      ))}
                     </select>
                   </InputWrapper>
 
-                  <InputWrapper label="Kecamatan" icon={<Navigation size={18} />}>
+                  <InputWrapper
+                    label="Kecamatan"
+                    icon={<Navigation size={18} />}
+                  >
                     <select
                       name="kecamatan_id"
                       value={formData.kecamatan_id}
@@ -365,7 +420,11 @@ const Registrasi = () => {
                       required
                     >
                       <option value="">Pilih</option>
-                      {districts.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
+                      {districts.map((d) => (
+                        <option key={d.id} value={d.id}>
+                          {d.name}
+                        </option>
+                      ))}
                     </select>
                   </InputWrapper>
                 </div>
@@ -392,7 +451,9 @@ const Registrasi = () => {
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
-                    {step === 1 ? "Lanjutkan Ke Profil" : "Selesaikan Pendaftaran"}
+                    {step === 1
+                      ? "Lanjutkan Ke Profil"
+                      : "Selesaikan Pendaftaran"}
                     <ArrowRight size={18} />
                   </>
                 )}
@@ -414,6 +475,28 @@ const Registrasi = () => {
           </form>
         </div>
       </div>
+      {isLoading && step === 2 && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900/60 backdrop-blur-md transition-all duration-500">
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-2xl flex flex-col items-center gap-6 max-w-sm w-full mx-4 animate-in fade-in zoom-in duration-300">
+            <div className="relative">
+              <div className="w-20 h-20 border-4 border-blue-100 rounded-full" />
+              <Loader2
+                size={80}
+                className="text-blue-600 animate-spin absolute top-0 left-0"
+              />
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-black text-slate-800 mb-2">
+                Harap Tunggu
+              </h3>
+              <p className="text-slate-500 font-medium leading-relaxed">
+                Sedang memproses pendaftaran Anda. Mohon tidak menutup halaman
+                ini.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

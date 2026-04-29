@@ -119,19 +119,21 @@ const DashboardStats = () => {
     },
   ];
 
+  const distributionColors = [
+    "rgba(59, 130, 246, 0.8)",
+    "rgba(16, 185, 129, 0.8)",
+    "rgba(139, 92, 246, 0.8)",
+    "rgba(245, 158, 11, 0.8)",
+    "rgba(239, 68, 68, 0.8)",
+  ];
+
   const distributionData = {
     labels: (analytics.program_distribution || []).map((item) => item.name),
     datasets: [
       {
         label: "Pendaftar",
         data: (analytics.program_distribution || []).map((item) => item.count),
-        backgroundColor: [
-          "rgba(59, 130, 246, 0.8)",
-          "rgba(16, 185, 129, 0.8)",
-          "rgba(139, 92, 246, 0.8)",
-          "rgba(245, 158, 11, 0.8)",
-          "rgba(239, 68, 68, 0.8)",
-        ],
+        backgroundColor: distributionColors,
         hoverOffset: 10,
         borderWidth: 0,
       },
@@ -161,6 +163,7 @@ const DashboardStats = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
+        display: true,
         position: "bottom",
         labels: {
           usePointStyle: true,
@@ -191,10 +194,6 @@ const DashboardStats = () => {
             Ringkasan data pendaftaran dan statistik program.
           </p>
         </div>
-        <div className="bg-white px-4 py-2 rounded-2xl border border-slate-200 flex items-center gap-2 text-sm font-semibold text-slate-600 shadow-sm">
-          <Clock size={16} className="text-blue-500" />
-          Real-time: {new Date().toLocaleTimeString()}
-        </div>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -223,7 +222,6 @@ const DashboardStats = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Replacement for Trend Card: Detailed Program Performance */}
         <div className="lg:col-span-2 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2 text-left">
@@ -267,31 +265,45 @@ const DashboardStats = () => {
             <PieIcon className="text-purple-500" size={22} />
             Distribusi Peminat
           </h3>
-          <div className="h-[300px] relative flex flex-col items-center">
-            <div className="w-full h-full">
-              <Doughnut
-                data={distributionData}
-                options={{
-                  ...chartOptions,
-                  plugins: {
-                    ...chartOptions.plugins,
-                    legend: { position: "bottom" },
-                  },
-                  cutout: "70%",
-                  layout: {
-                    padding: { bottom: 20 }
-                  }
-                }}
-              />
-            </div>
-            <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none">
-              <span className="text-3xl font-black text-slate-800 leading-none">
+          {/* Container with relative position and flex centering */}
+          <div className="h-[300px] relative">
+            <Doughnut
+              data={distributionData}
+              options={{
+                ...chartOptions,
+                plugins: {
+                  ...chartOptions.plugins,
+                  legend: { display: false }, // Hide default legend for precision centering
+                },
+                cutout: "75%",
+                maintainAspectRatio: false,
+              }}
+            />
+            {/* Absolute centering - perfectly centered because legend is hidden */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-2">
+              <span className="text-4xl font-black text-slate-800 leading-none">
                 {analytics.program_distribution.length}
               </span>
-              <span className="text-xs font-bold text-slate-400 uppercase mt-1">
+              <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mt-1">
                 Program
               </span>
             </div>
+          </div>
+          
+          {/* Custom HTML Legend for better precision and design */}
+          <div className="mt-8 space-y-3">
+            {(analytics.program_distribution || []).map((item, idx) => (
+              <div key={idx} className="flex items-center justify-between text-sm">
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-3 h-3 rounded-full" 
+                    style={{ backgroundColor: distributionColors[idx % distributionColors.length] }} 
+                  />
+                  <span className="font-semibold text-slate-600 truncate max-w-[150px]">{item.name}</span>
+                </div>
+                <span className="font-black text-slate-800">{item.count}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -328,11 +340,11 @@ const DashboardStats = () => {
                 key={idx}
                 className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-blue-50 rounded-2xl border border-slate-100 transition-all duration-300"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 text-left">
                   <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center font-black text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
                     {idx + 1}
                   </div>
-                  <div className="text-left">
+                  <div>
                     <p className="font-bold text-slate-800 text-sm">
                       {getProvinceName(prov.provinsi_id)}
                     </p>
