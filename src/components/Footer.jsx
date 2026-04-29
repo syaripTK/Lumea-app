@@ -28,7 +28,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
-          {/* Brand Column */}
+          {}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
@@ -63,7 +63,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Columns */}
+          {}
           <div className="lg:col-span-4 grid grid-cols-2 gap-8">
             {Object.entries(footerLinks).map(([title, links]) => (
               <div key={title}>
@@ -88,7 +88,7 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Newsletter Column */}
+          {}
           <div className="lg:col-span-4">
             <div className="p-8 rounded-[2.5rem] bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />

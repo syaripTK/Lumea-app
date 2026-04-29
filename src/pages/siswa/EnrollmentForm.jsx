@@ -5,11 +5,6 @@ import { notyfSuccess, notyfError } from "../../utils/notyf";
 import { UploadCloud, FileImage, X, AlertCircle } from "lucide-react";
 import { gsap } from "gsap";
 
-/**
- * EnrollmentForm
- * Handles the enrollment process, including multipart/form-data upload
- * and instant image preview using URL.createObjectURL.
- */
 const EnrollmentForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -66,7 +61,7 @@ const EnrollmentForm = () => {
         return;
       }
       if (selectedFile.size > 5 * 1024 * 1024) {
-        // 5MB
+
         notyfError("Ukuran file maksimal adalah 5MB.");
         return;
       }

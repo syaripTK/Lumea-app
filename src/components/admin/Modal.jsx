@@ -3,10 +3,6 @@ import { X } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
-/**
- * Modal Component
- * Reusable modal for admin interfaces with GSAP entrance animations.
- */
 const Modal = ({ isOpen, onClose, title, children }) => {
   const modalRef = useRef(null);
   const overlayRef = useRef(null);

@@ -220,8 +220,6 @@ const DashboardStats = () => {
           Terakhir diperbarui: {new Date().toLocaleTimeString()}
         </div>
       </div>
-
-      {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {kpis.map((kpi, index) => (
           <div 
@@ -244,10 +242,7 @@ const DashboardStats = () => {
           </div>
         ))}
       </div>
-
-      {/* Main Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Trend Chart */}
         <div className="animate-up lg:col-span-2 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2">
@@ -269,8 +264,6 @@ const DashboardStats = () => {
             )}
           </div>
         </div>
-
-        {/* Distribution Chart */}
         <div className="animate-up bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
           <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-8">
             <PieIcon className="text-purple-500" size={22} />
@@ -297,7 +290,6 @@ const DashboardStats = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-8">
-        {/* Payment Ratio Bar */}
         <div className="animate-up bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
           <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-8">
             <BarChart3 className="text-emerald-500" size={22} />
@@ -318,7 +310,7 @@ const DashboardStats = () => {
           </div>
         </div>
 
-        {/* Top Provinces */}
+        {}
         <div className="animate-up bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
           <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-6">
             <MapPin className="text-orange-500" size={22} />

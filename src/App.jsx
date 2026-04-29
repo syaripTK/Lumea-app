@@ -19,7 +19,7 @@ import SiswaDashboard from "./pages/siswa/SiswaDashboard";
 import ProgramDiscovery from "./pages/siswa/ProgramDiscovery";
 import EnrollmentForm from "./pages/siswa/EnrollmentForm";
 import MyEnrollments from "./pages/siswa/MyEnrollments";
-
+import NotFoundLumea from "./pages/NotFoundLumea";
 function App() {
   return (
     <BrowserRouter>
@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/registrasi" element={<Registrasi />} />
         <Route path="/login" element={<Login />} />
-        
+
         {/* Admin Routes */}
         <Route path="/admin" element={<ProtectedAdminRoute />}>
           <Route element={<AdminLayout />}>
@@ -46,6 +46,7 @@ function App() {
             <Route path="my-enrollments" element={<MyEnrollments />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFoundLumea />} />
       </Routes>
     </BrowserRouter>
   );

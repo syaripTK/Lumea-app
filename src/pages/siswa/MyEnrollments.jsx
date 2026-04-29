@@ -12,11 +12,8 @@ import {
 } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { getImageUrl } from "../../utils/helpers";
 
-/**
- * MyEnrollments
- * Dashboard for students to track their enrollments and process payments via Midtrans.
- */
 const MyEnrollments = () => {
   useMidtransSnap();
   const [enrollments, setEnrollments] = useState([]);
@@ -56,14 +53,6 @@ const MyEnrollments = () => {
     },
     { dependencies: [isLoading, enrollments] },
   );
-
-  const getImageUrl = (path) => {
-    if (!path) return "";
-    if (path.startsWith("http")) return path;
-    const baseUrl = import.meta.env.VITE_API_URL.replace("/api/v1", "");
-    const cleanPath = path.replace(/\\/g, "/").split("/").pop();
-    return `${baseUrl}/uploads/${cleanPath}`;
-  };
 
   const handlePayment = async (pendaftarId) => {
     setProcessingId(pendaftarId);
@@ -307,7 +296,7 @@ const MyEnrollments = () => {
                   </div>
                 </div>
 
-                {/* Right Side: Ijazah Preview & Notes */}
+                {}
                 <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col bg-white">
                   {statusReg === "ditolak" && enrollment.catatan_admin && (
                     <div className="mb-6 bg-red-50 border border-red-200 p-5 rounded-2xl">

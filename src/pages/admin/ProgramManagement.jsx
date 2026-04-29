@@ -5,17 +5,13 @@ import Modal from "../../components/admin/Modal";
 import { Plus, Edit2, Trash2, AlertCircle } from "lucide-react";
 import Swal from "sweetalert2";
 
-/**
- * ProgramManagement
- * Admin module for CRUD operations on Programs.
- */
 const ProgramManagement = () => {
   const [programs, setPrograms] = useState([]);
   const [programCounts, setProgramCounts] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState("create"); // 'create' or 'edit'
+  const [modalMode, setModalMode] = useState("create");
   const [selectedProgram, setSelectedProgram] = useState(null);
   
   const [formData, setFormData] = useState({
@@ -84,8 +80,7 @@ const ProgramManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Parse numeric values
+
     const payload = {
       ...formData,
       biaya_pendaftaran: parseInt(formData.biaya_pendaftaran, 10),

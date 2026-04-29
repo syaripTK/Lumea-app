@@ -12,10 +12,6 @@ import {
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
-/**
- * AdminLayout
- * Sidebar-based layout for the admin panel with collapse/expand and GSAP animations.
- */
 const AdminLayout = () => {
   const navigate = useNavigate();
   const sidebarRef = useRef(null);

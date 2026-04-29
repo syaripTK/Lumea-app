@@ -2,11 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 
-/**
- * ProtectedSiswaRoute
- * Guards student routes. Verifies authentication and role via GET /auth/me.
- * Displays a cinematic full-screen spinner while checking.
- */
 const ProtectedSiswaRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,18 +10,16 @@ const ProtectedSiswaRoute = () => {
     const verifySiswa = async () => {
       try {
         const response = await axiosInstance.get("/auth/me");
-        // Typically role could be 'siswa' or we just allow any authenticated user except admins.
-        // Assuming we strictly check for 'siswa':
+
         if (response.data?.data?.role === "siswa" || !response.data?.data?.role) {
            setIsAuthenticated(true);
         } else {
-           // If they are admin, maybe we should not allow them here, or just let them test.
-           // For strict role checking:
+
            if (response.data?.data?.role === "admin") {
               console.warn("Admin trying to access siswa route.");
            }
-           setIsAuthenticated(true); // Let's just require authentication for now to avoid locking admins out of testing, or strictly enforce it? Let's strictly enforce if it's a student portal.
-           // Actually, let's just ensure they are logged in.
+           setIsAuthenticated(true);
+
         }
       } catch (error) {
         console.error("Authentication failed:", error);

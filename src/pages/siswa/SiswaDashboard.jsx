@@ -11,10 +11,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import axios from "axios";
 
-/**
- * SiswaDashboard
- * Onboarding screen and profile completeness guard.
- */
 const SiswaDashboard = () => {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState(null);
@@ -128,7 +124,7 @@ const SiswaDashboard = () => {
 
   return (
     <div ref={containerRef} className="max-w-4xl mx-auto mt-8">
-      {/* Welcome Header */}
+      {}
       <div className="mb-10 text-center sm:text-left">
         <h1 className="welcome-text text-3xl sm:text-4xl font-bold text-slate-800 tracking-tight">
           Selamat Datang,{" "}
@@ -142,7 +138,7 @@ const SiswaDashboard = () => {
         </p>
       </div>
 
-      {/* Profile Guard Card */}
+      {}
       <div className="profile-card bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-2 bg-slate-100">
           <div className="progress-bar-fill h-full bg-blue-500 w-0"></div>
@@ -150,7 +146,7 @@ const SiswaDashboard = () => {
 
         <div className="p-8 sm:p-10">
           <div className="flex flex-col sm:flex-row gap-8 items-start">
-            {/* Left: Avatar & Progress */}
+            {}
             <div className="w-full sm:w-1/3 flex flex-col items-center sm:items-start text-center sm:text-left">
               <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-50 flex items-center justify-center text-blue-600 mb-4 shadow-inner">
                 <UserCircle2 size={48} strokeWidth={1.5} />
@@ -177,7 +173,7 @@ const SiswaDashboard = () => {
               </div>
             </div>
 
-            {/* Right: Details & Action */}
+            {}
             <div className="w-full sm:w-2/3 border-t sm:border-t-0 sm:border-l border-slate-100 pt-8 sm:pt-0 sm:pl-8">
               {!isProfileComplete ? (
                 <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-4 mb-6">

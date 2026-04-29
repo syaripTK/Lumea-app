@@ -3,15 +3,12 @@ import axiosInstance from "../../utils/axiosInstance";
 import { notyfSuccess, notyfError } from "../../utils/notyf";
 import Modal from "../../components/admin/Modal";
 import { CheckCircle, XCircle, FileText, Search, Eye } from "lucide-react";
+import { getImageUrl } from "../../utils/helpers";
 
-/**
- * EnrollmentVerification
- * Admin module for viewing and verifying student enrollments.
- */
 const EnrollmentVerification = () => {
   const [enrollments, setEnrollments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [filterStatus, setFilterStatus] = useState("semua"); // semua, pending, terverifikasi, ditolak
+  const [filterStatus, setFilterStatus] = useState("semua");
   const [searchTerm, setSearchTerm] = useState("");
 
   const [selectedEnrollment, setSelectedEnrollment] = useState(null);
@@ -37,14 +34,6 @@ const EnrollmentVerification = () => {
   useEffect(() => {
     fetchEnrollments();
   }, []);
-
-  const getImageUrl = (path) => {
-    if (!path) return "";
-    if (path.startsWith("http")) return path;
-    const baseUrl = import.meta.env.VITE_API_URL.replace("/api/v1", "");
-    const cleanPath = path.replace(/\\/g, "/").split("/").pop();
-    return `${baseUrl}/uploads/${cleanPath}`;
-  };
 
   const handleOpenDetail = (enrollment) => {
     setSelectedEnrollment(enrollment);
@@ -146,7 +135,7 @@ const EnrollmentVerification = () => {
         </div>
       </div>
 
-      {/* Filter Tabs */}
+      {}
       <div className="flex space-x-2 border-b border-slate-200 overflow-x-auto pb-2">
         {["semua", "pending", "terverifikasi", "ditolak"].map((status) => (
           <button
@@ -163,7 +152,7 @@ const EnrollmentVerification = () => {
         ))}
       </div>
 
-      {/* Data Table */}
+      {}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -263,7 +252,7 @@ const EnrollmentVerification = () => {
         </div>
       </div>
 
-      {/* Detail Modal */}
+      {}
       <Modal
         isOpen={isDetailModalOpen}
         onClose={() => !isSubmitting && setIsDetailModalOpen(false)}
@@ -415,7 +404,7 @@ const EnrollmentVerification = () => {
         )}
       </Modal>
 
-      {/* Reject Reason Modal */}
+      {}
       <Modal
         isOpen={isRejectModalOpen}
         onClose={() => !isSubmitting && setIsRejectModalOpen(false)}

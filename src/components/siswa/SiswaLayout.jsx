@@ -10,10 +10,6 @@ import {
   RocketIcon,
 } from "lucide-react";
 
-/**
- * SiswaLayout
- * Top Navigation based layout for the Student (Siswa) panel.
- */
 const SiswaLayout = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,12 +35,12 @@ const SiswaLayout = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans flex flex-col">
-      {/* Top Navigation */}
+      {}
       <nav className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              {/* Logo */}
+              {}
               <div className="flex-shrink-0 flex items-center gap-2 font-bold text-xl tracking-wider text-slate-800">
                 <RocketIcon size={24} className="text-blue-600" />
                 <span>
@@ -52,7 +48,7 @@ const SiswaLayout = () => {
                 </span>
               </div>
 
-              {/* Desktop Menu */}
+              {}
               <div className="hidden sm:ml-10 sm:flex sm:space-x-4">
                 {navItems.map((item) => (
                   <NavLink
@@ -73,7 +69,7 @@ const SiswaLayout = () => {
               </div>
             </div>
 
-            {/* Desktop User Actions */}
+            {}
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
               <div className="flex items-center gap-3 mr-4 border-r border-slate-200 pr-4">
                 <div className="flex flex-col text-right">
@@ -97,7 +93,7 @@ const SiswaLayout = () => {
               </button>
             </div>
 
-            {/* Mobile menu button */}
+            {}
             <div className="flex items-center sm:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -110,7 +106,7 @@ const SiswaLayout = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Panel */}
+        {}
         <div className={`sm:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
           <div className="pt-2 pb-3 space-y-1 px-4 border-t border-slate-100">
             {navItems.map((item) => (
@@ -141,7 +137,7 @@ const SiswaLayout = () => {
         </div>
       </nav>
 
-      {/* Main Content */}
+      {}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
         <Outlet />
       </main>

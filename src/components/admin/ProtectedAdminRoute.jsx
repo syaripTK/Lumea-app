@@ -2,11 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 
-/**
- * ProtectedAdminRoute
- * Guards admin routes. Checks GET /auth/me for valid token and admin role.
- * Shows a full-screen spinner to prevent UI flicker.
- */
 const ProtectedAdminRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

@@ -39,3 +39,13 @@ export const capitalizeFirst = (str) => {
   if (!str) return "";
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+export const getImageUrl = (path) => {
+  if (!path) return "";
+  if (path.startsWith("http")) return path;
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+  // Ambil hanya nama filenya jika path berupa path lengkap dari database
+  const cleanPath = path.replace(/\\/g, "/").split("/").pop();
+  return `${baseUrl}/uploads/${cleanPath}`;
+};

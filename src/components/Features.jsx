@@ -87,7 +87,7 @@ const Features = () => {
   return (
     <section id="fitur" className="py-24 bg-slate-50/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Heading */}
+        {}
         <div ref={titleRef} className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-4 uppercase tracking-wider">
             Fitur Unggulan
@@ -104,7 +104,7 @@ const Features = () => {
           </p>
         </div>
 
-        {/* Grid */}
+        {}
         <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f) => (
             <FeatureCard key={f.title} {...f} />

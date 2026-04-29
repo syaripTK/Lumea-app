@@ -42,7 +42,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
-          <a href="#beranda" className="flex items-center gap-2.5 group">
+          <span className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-200">
               <GraduationCap size={20} className="text-white" />
             </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
                 Sistem Pendaftaran Siswa
               </span>
             </div>
-          </a>
+          </span>
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (

@@ -5,10 +5,6 @@ import { BookOpen, Users, ArrowRight, Wallet } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
-/**
- * ProgramDiscovery
- * Displays available programs with GSAP stagger entrance and hover animations.
- */
 const ProgramDiscovery = () => {
   const navigate = useNavigate();
   const [programs, setPrograms] = useState([]);
@@ -31,7 +27,7 @@ const ProgramDiscovery = () => {
 
   useGSAP(() => {
     if (!isLoading && programs.length > 0) {
-      // Stagger entrance animation for the cards
+
       gsap.from(".program-card", {
         y: 50,
         opacity: 0,
@@ -84,7 +80,7 @@ const ProgramDiscovery = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                {/* Card Header / Image Placeholder */}
+                {}
                 <div className="h-40 bg-gradient-to-br from-blue-600 to-indigo-800 relative flex flex-col justify-center items-center text-white overflow-hidden p-6 text-center">
                   <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                   <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-24 h-24 bg-blue-400/20 rounded-full blur-xl"></div>
@@ -92,7 +88,7 @@ const ProgramDiscovery = () => {
                   <h3 className="text-xl font-bold leading-tight relative z-10">{program.nama_program}</h3>
                 </div>
 
-                {/* Card Body */}
+                {}
                 <div className="p-6 sm:p-8 flex-1 flex flex-col">
                   <p className="text-slate-600 text-sm mb-6 flex-1 line-clamp-3">
                     {program.deskripsi || "Tidak ada deskripsi tersedia untuk program ini."}
@@ -120,7 +116,7 @@ const ProgramDiscovery = () => {
                     </div>
                   </div>
 
-                  {/* Action Button */}
+                  {}
                   <button
                     onClick={() => navigate(`/apply/${program.id}`)}
                     disabled={isFull}
