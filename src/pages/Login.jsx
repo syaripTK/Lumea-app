@@ -74,7 +74,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
-      {/* Sidebar - Similar to Registration */}
       <div className="hidden lg:flex lg:w-[40%] relative overflow-hidden bg-blue-600">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 opacity-90" />
         <div
@@ -107,11 +106,13 @@ const Login = () => {
           </div>
 
           <div className="flex items-center gap-4 text-sm font-medium text-blue-200">
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
-                <div
+                <img
                   key={i}
-                  className="w-8 h-8 rounded-full border-2 border-blue-600 bg-slate-200"
+                  src={`/ava${i}.jpeg`}
+                  alt={`User Avatar ${i}`}
+                  className="w-10 h-10 rounded-full border-2 border-blue-600 bg-slate-200 object-cover"
                 />
               ))}
             </div>
@@ -120,10 +121,8 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Login Form Section */}
       <div className="w-full lg:w-[60%] flex flex-col items-center justify-center py-12 px-6 sm:px-12 lg:px-20 bg-slate-50">
         <div className="w-full max-w-lg">
-          {/* Back Button */}
           <button
             onClick={() => navigate("/")}
             className="group flex items-center gap-2 text-slate-400 hover:text-blue-600 font-bold text-sm mb-12 transition-colors cursor-pointer"

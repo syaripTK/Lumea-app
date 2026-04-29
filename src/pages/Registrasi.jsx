@@ -185,11 +185,13 @@ const Registrasi = () => {
           </div>
 
           <div className="flex items-center gap-4 text-sm font-medium text-blue-200">
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
-                <div
+                <img
                   key={i}
-                  className="w-8 h-8 rounded-full border-2 border-blue-600 bg-slate-200"
+                  src={`/ava${i}.jpeg`}
+                  alt={`User Avatar ${i}`}
+                  className="w-10 h-10 rounded-full border-2 border-blue-600 bg-slate-200 object-cover"
                 />
               ))}
             </div>
